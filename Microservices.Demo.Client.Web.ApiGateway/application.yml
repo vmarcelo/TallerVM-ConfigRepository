@@ -65,7 +65,7 @@ Routes:
  #           AllowedScopes:
  #               -      
         RouteClaimsRequirement:
-            userType: SALESMAN
+            userType: SALESMAN      
         DangerousAcceptAnyServerCertificateValidator: true
     -
         DownstreamPathTemplate: /api/Offers
@@ -98,9 +98,9 @@ Routes:
             userType: SALESMAN
         DangerousAcceptAnyServerCertificateValidator: true
     -
-        DownstreamPathTemplate: /api/Policies/{policyNumber}
+        DownstreamPathTemplate: /api/Policies/{number}
         DownstreamScheme: http
-        UpstreamPathTemplate: /api/Policies/{policyNumber}
+        UpstreamPathTemplate: /api/Policies/{number}
         ServiceName: Microservices.Demo.Policy.API
         UpstreamHttpMethod: 
             - Get
@@ -113,7 +113,7 @@ Routes:
         RouteClaimsRequirement:
             userType: SALESMAN      
         DangerousAcceptAnyServerCertificateValidator: true
-
+		
         #VM-Link-Inicio
         DownstreamPathTemplate: /api/Policies
         DownstreamScheme: http
@@ -142,27 +142,10 @@ Routes:
             AuthenticationProviderKey: ApiSecurityAuthenticationScheme
 #            AllowedScopes:
 #                -      
-        RouteClaimsRequirement:
-            userType: SALESMAN
+        RouteClaimsRequirement: 
+            userType: SALESMAN   
         DangerousAcceptAnyServerCertificateValidator: true
 
-        #VM-Link-Inicio
-        DownstreamPathTemplate: /api/Report
-        DownstreamScheme: http
-        UpstreamPathTemplate: /api/Report
-        ServiceName: Microservices.Demo.Report.API
-        UpstreamHttpMethod: 
-            - Get
-        FileCacheOptions: 
-            TtlSeconds: 15
-        AuthenticationOptions:
-            AuthenticationProviderKey: ApiSecurityAuthenticationScheme
-#            AllowedScopes:
-#                -
-        RouteClaimsRequirement:
-            userType: SALESMAN      
-        DangerousAcceptAnyServerCertificateValidator: true
-    -
         DownstreamPathTemplate: /api/Report
         DownstreamScheme: http
         UpstreamPathTemplate: /api/Report
@@ -172,8 +155,6 @@ Routes:
         FileCacheOptions: 
             TtlSeconds: 15        
         DangerousAcceptAnyServerCertificateValidator: true
-        #VM-Link-Fin
-        
 GlobalConfiguration:
     RequestIdKey: OcRequestId
     AdministrationPath: /administration
